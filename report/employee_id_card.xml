@@ -1,7 +1,6 @@
 <odoo>
     <template id="employee_id_card_template">
         <t t-call="web.html_container">
-            <!-- Dynamically set the company address and website from the res.company model -->
             <t t-foreach="docs" t-as="employee">
                 <t t-set="company_address">
                     <t t-esc="employee.company_id.partner_id.contact_address or 'Not Available'"/>
@@ -9,143 +8,138 @@
                 <t t-set="company_website">
                     <t t-esc="employee.company_id.website or 'Not Available'"/>
                 </t>
+                <t t-set="company_email">
+                    <t t-esc="employee.company_id.email or 'Not Available'"/>
+                </t>
+                <t t-set="company_phone">
+                    <t t-esc="employee.company_id.phone or 'Not Available'"/>
+                </t>
 
                 <style>
                     .id-card-wrapper {
-                        width: 100%;
-                        margin-bottom: 40px;
-                        text-align: center;
-                        page-break-inside: avoid;
+                    width: 100%;
+                    margin-bottom: 40px;
+                    text-align: center;
+                    page-break-inside: avoid;
                     }
 
                     .id-card-container {
-                        display: inline-block;
-                        text-align: left;
-                        page-break-inside: avoid;
+                    display: inline-block;
+                    text-align: left;
+                    page-break-inside: avoid;
                     }
 
                     .employee-id-card,
                     .employee-id-card-back {
-                        width: 320px;
-                        height: 550px;
-                        border: 2px solid #2C3E50;
-                        border-radius: 16px;
-                        background: linear-gradient(to bottom, #ffffff, #ecf0f1);
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        box-sizing: border-box;
-                        padding: 20px;
-                        text-align: center;
-                        vertical-align: top;
-                        display: inline-block;
-                        margin: 0 20px 20px 0;
-                        float: left;
+                    width: 320px;
+                    height: 550px;
+                    border: 2px solid #2C3E50;
+                    border-radius: 16px;
+                    background: linear-gradient(to bottom, #ffffff, #ecf0f1);
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    box-sizing: border-box;
+                    padding: 20px;
+                    text-align: center;
+                    vertical-align: top;
+                    display: inline-block;
+                    margin: 0 20px 20px 0;
+                    float: left;
                     }
 
                     .employee-logo, .employee-photo {
-                        margin: 0 auto 20px;
-                        border-radius: 8px;
-                        overflow: hidden;
-                        border: 2px solid #3498db;
-                        width: 80px;
-                        height: 80px;
+                    margin: 0 auto 20px;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    border: 2px solid #3498db;
+                    width: 80px;
+                    height: 80px;
                     }
 
                     .employee-photo {
-                        width: 120px;
-                        height: 120px;
-                        border-radius: 50%;
-                        border: 4px solid #3498db;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                    border: 4px solid #3498db;
                     }
 
                     .employee-logo img, .employee-photo img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                     }
 
                     .employee-id-card h3, .employee-id-card-back h4 {
-                        font-size: 22px;
-                        color: #2C3E50;
-                        font-weight: bold;
-                        margin-bottom: 20px;
-                        border-bottom: 2px solid #bdc3c7;
-                        padding-bottom: 10px;
+                    font-size: 22px;
+                    color: #2C3E50;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                    border-bottom: 2px solid #bdc3c7;
+                    padding-bottom: 10px;
                     }
 
                     .employee-info, .employee-back-info {
-                        font-size: 14px;
-                        color: #34495e;
-                        line-height: 1.6;
-                        text-align: left;
+                    font-size: 14px;
+                    color: #34495e;
+                    line-height: 1.6;
+                    text-align: left;
                     }
 
                     .employee-info p, .employee-back-info p {
-                        margin: 6px 0;
-                        font-weight: 500;
+                    margin: 6px 0;
+                    font-weight: 500;
                     }
 
                     .employee-footer {
-                        font-size: 12px;
-                        color: #7f8c8d;
-                        padding-top: 10px;
-                        border-top: 1px solid #bdc3c7;
-                        text-align: center;
+                    font-size: 12px;
+                    color: #7f8c8d;
+                    padding-top: 10px;
+                    border-top: 1px solid #bdc3c7;
+                    text-align: center;
                     }
 
                     .employee-footer a {
-                        color: #2980b9;
-                        text-decoration: none;
-                        font-weight: bold;
+                    color: #2980b9;
+                    text-decoration: none;
+                    font-weight: bold;
                     }
 
                     .employee-qr-code {
-                        text-align: center;
-                        margin-top: 30px;
+                    text-align: center;
+                    margin-top: 30px;
                     }
 
                     .employee-qr-code img {
-                        width: 100px;
-                        height: 100px;
-                        object-fit: contain;
+                    width: 100px;
+                    height: 100px;
+                    object-fit: contain;
                     }
 
                     .employee-qr-code p {
-                        margin-top: 10px;
-                        font-size: 12px;
-                        color: #7f8c8d;
-                    }
-
-                    .terms-conditions {
-                        font-size: 12px;
-                        color: #34495e;
-                        line-height: 1.5;
-                        margin-top: 20px;
-                        text-align: left;
-                    }
-
-                    .terms-conditions h5 {
-                        font-weight: bold;
+                    margin-top: 10px;
+                    font-size: 12px;
+                    color: #7f8c8d;
                     }
 
                     @media print {
-                        .id-card-wrapper {
-                            page-break-inside: avoid;
-                        }
+                    .id-card-wrapper {
+                    page-break-inside: avoid;
+                    }
 
-                        .employee-id-card,
-                        .employee-id-card-back {
-                            float: left;
-                            page-break-inside: avoid;
-                        }
+                    .employee-id-card,
+                    .employee-id-card-back {
+                    float: left;
+                    page-break-inside: avoid;
+                    }
 
-                        .id-card-container {
-                            display: inline-block;
-                        }
+                    .id-card-container {
+                    display: inline-block;
+                    }
                     }
                 </style>
 
                 <div class="id-card-wrapper">
                     <div class="id-card-container">
+
                         <!-- Front Side -->
                         <div class="employee-id-card">
                             <div>
@@ -180,15 +174,15 @@
                                     </p>
                                     <p>
                                         <strong>Position:</strong>
-                                        <t t-esc="employee.job_title"/>
+                                        <t t-esc="employee.job_title or 'Not Assigned'"/>
                                     </p>
                                     <p>
                                         <strong>Email:</strong>
-                                        <t t-esc="employee.work_email"/>
+                                        <t t-esc="employee.work_email or 'N/A'"/>
                                     </p>
                                     <p>
                                         <strong>Phone:</strong>
-                                        <t t-esc="employee.work_phone"/>
+                                        <t t-esc="employee.work_phone or 'N/A'"/>
                                     </p>
                                 </div>
                             </div>
@@ -198,12 +192,6 @@
                                     <strong>Address:</strong>
                                     <t t-esc="company_address"/>
                                 </p>
-<!--                                <p>-->
-<!--                                    <strong>Website:</strong>-->
-<!--                                    <a t-att-href="company_website" target="_blank">-->
-<!--                                        <t t-esc="company_website"/>-->
-<!--                                    </a>-->
-<!--                                </p>-->
                             </div>
                         </div>
 
@@ -234,16 +222,33 @@
                                      alt="QR Code"/>
                                 <p>Scan for Employee Info</p>
                             </div>
-                            <p>
-                                <strong>Company Address:</strong>
-                                <t t-esc="company_address"/>
-                            </p>
-                            <p>
+
+                            <div class="employee-footer">
+                                <p>
+                                    <strong>Company Address:</strong>
+                                    <t t-esc="company_address"/>
+                                </p>
+                                <p>
+                                    <strong>Phone:</strong>
+                                    <t t-esc="company_phone"/>
+                                </p>
+                                <p>
+                                    <strong>Email:</strong>
+                                    <t t-esc="company_email"/>
+                                </p>
+                                <p>
                                 <strong>Website:</strong>
                                 <a t-att-href="company_website" target="_blank">
                                     <t t-esc="company_website"/>
                                 </a>
                             </p>
+                            </div>
+<!--                            <p>-->
+<!--                                <strong>Website:</strong>-->
+<!--                                <a t-att-href="company_website" target="_blank">-->
+<!--                                    <t t-esc="company_website"/>-->
+<!--                                </a>-->
+<!--                            </p>-->
                         </div>
                     </div>
                 </div>
