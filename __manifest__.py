@@ -4,6 +4,7 @@
     "category": "Human Resources",
     "summary": "Print Employee ID Cards",
     'license':'LGPL-3',
+    'author' : 'Rakib Hasan',
     "depends": ["hr"],
     "data": [
         "views/employee_id_card_menu.xml",
