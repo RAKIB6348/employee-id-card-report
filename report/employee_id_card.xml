@@ -1,13 +1,188 @@
+<!--<odoo>-->
+<!--    <template id="employee_id_card_template">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <t t-set="company_address">826, East Shewrapara, Rokeya Sarani, Dhaka-1216</t>-->
+<!--            <t t-foreach="docs" t-as="employee">-->
+
+<!--                &lt;!&ndash; Styles &ndash;&gt;-->
+<!--                <style>-->
+<!--                    /* General Styles */-->
+<!--                    .employee-id-card {-->
+<!--                        width: 320px;-->
+<!--                        height: 550px;-->
+<!--                        border: 2px solid #2C3E50;-->
+<!--                        border-radius: 16px;-->
+<!--                        background: linear-gradient(to bottom, #ffffff, #ecf0f1);-->
+<!--                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
+<!--                        box-sizing: border-box;-->
+<!--                        padding: 20px;-->
+<!--                        text-align: center;-->
+<!--                        position: relative;-->
+<!--                        display: flex;-->
+<!--                        flex-direction: column;-->
+<!--                        justify-content: space-between;-->
+<!--                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);-->
+<!--                        background-color: #fff;-->
+<!--                    }-->
+
+<!--                    /* Title Style */-->
+<!--                    .employee-id-card h3 {-->
+<!--                        margin: 0;-->
+<!--                        font-size: 22px;-->
+<!--                        color: #2C3E50;-->
+<!--                        font-weight: bold;-->
+<!--                        border-bottom: 2px solid #bdc3c7;-->
+<!--                        padding-bottom: 10px;-->
+<!--                        margin-bottom: 20px;-->
+<!--                    }-->
+
+<!--                    /* Company Logo */-->
+<!--                    .employee-logo {-->
+<!--                        width: 80px;-->
+<!--                        height: 80px;-->
+<!--                        border-radius: 8px;-->
+<!--                        overflow: hidden;-->
+<!--                        margin: 0 auto 20px;-->
+<!--                        border: 2px solid #3498db;-->
+<!--                    }-->
+<!--                    .employee-logo img {-->
+<!--                        width: 100%;-->
+<!--                        height: 100%;-->
+<!--                        object-fit: cover;-->
+<!--                    }-->
+
+<!--                    /* Employee Photo */-->
+<!--                    .employee-photo {-->
+<!--                        width: 120px;-->
+<!--                        height: 120px;-->
+<!--                        border-radius: 50%;-->
+<!--                        overflow: hidden;-->
+<!--                        border: 4px solid #3498db;-->
+<!--                        margin: 20px auto 10px;-->
+<!--                    }-->
+
+<!--                    .employee-photo img {-->
+<!--                        width: 100%;-->
+<!--                        height: 100%;-->
+<!--                        object-fit: cover;-->
+<!--                    }-->
+
+<!--                    /* Employee Info */-->
+<!--                    .employee-info {-->
+<!--                        font-size: 14px;-->
+<!--                        color: #34495e;-->
+<!--                        line-height: 1.6;-->
+<!--                        margin-top: 10px;-->
+<!--                    }-->
+
+<!--                    .employee-info p {-->
+<!--                        margin: 6px 0;-->
+<!--                        font-weight: 500;-->
+<!--                    }-->
+
+<!--                    /* Footer Section */-->
+<!--                    .employee-footer {-->
+<!--                        font-size: 12px;-->
+<!--                        color: #7f8c8d;-->
+<!--                        margin-top: 20px;-->
+<!--                        padding-top: 10px;-->
+<!--                        border-top: 1px solid #bdc3c7;-->
+<!--                    }-->
+
+<!--                    .employee-footer p {-->
+<!--                        margin: 5px 0;-->
+<!--                    }-->
+
+<!--                    .employee-footer a {-->
+<!--                        color: #2980b9;-->
+<!--                        text-decoration: none;-->
+<!--                        font-weight: bold;-->
+<!--                    }-->
+
+<!--                    .employee-footer a:hover {-->
+<!--                        text-decoration: underline;-->
+<!--                    }-->
+
+<!--                    /* Enhancements for better readability */-->
+<!--                    .employee-info strong {-->
+<!--                        color: #2C3E50;-->
+<!--                    }-->
+<!--                </style>-->
+
+<!--                &lt;!&ndash; Card &ndash;&gt;-->
+<!--                <div class="page">-->
+<!--                    <div class="employee-id-card">-->
+<!--                        <div>-->
+<!--                            &lt;!&ndash; Company Logo &ndash;&gt;-->
+<!--                            <div class="employee-logo">-->
+<!--                                <t t-if="employee.company_id.logo">-->
+<!--                                    <img t-att-src="'data:image/png;base64,' + (employee.company_id.logo and employee.company_id.logo.decode('utf-8') or '')" />-->
+<!--                                </t>-->
+<!--                                <t t-else="">-->
+<!--                                    <img src="/web/static/src/img/placeholder.png" />-->
+<!--                                </t>-->
+<!--                            </div>-->
+
+<!--                            <h3>Employee ID Card</h3>-->
+
+<!--                            &lt;!&ndash; Image &ndash;&gt;-->
+<!--                            <div class="employee-photo">-->
+<!--                                <t t-if="employee.image_1920">-->
+<!--                                    <img t-att-src="'data:image/png;base64,' + (employee.image_1920 and employee.image_1920.decode('utf-8') or '')" />-->
+<!--                                </t>-->
+<!--                                <t t-else="">-->
+<!--                                    <img src="/web/static/src/img/placeholder.png" />-->
+<!--                                </t>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Info &ndash;&gt;-->
+<!--                            <div class="employee-info">-->
+<!--                                <p><strong>Name:</strong> <t t-esc="employee.name" /></p>-->
+<!--                                <p><strong>Position:</strong> <t t-esc="employee.job_title" /></p>-->
+<!--                                <p><strong>Email:</strong> <t t-esc="employee.work_email" /></p>-->
+<!--                                <p><strong>Phone:</strong> <t t-esc="employee.work_phone" /></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash; Footer &ndash;&gt;-->
+<!--                        <div class="employee-footer">-->
+<!--                            <p><strong>Address:</strong> <t t-esc="company_address" /></p>-->
+<!--                            <p>-->
+<!--                                <strong>Website:</strong>-->
+<!--                                <a href="https://kendroo.io/" target="_blank">-->
+<!--                                    kendroo.io-->
+<!--                                </a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+<!--</odoo>-->
+
+
 <odoo>
     <template id="employee_id_card_template">
         <t t-call="web.html_container">
             <t t-set="company_address">826, East Shewrapara, Rokeya Sarani, Dhaka-1216</t>
             <t t-foreach="docs" t-as="employee">
-
-                <!-- Styles -->
                 <style>
-                    /* General Styles */
-                    .employee-id-card {
+                    .id-card-wrapper {
+                        width: 100%;
+                        margin-bottom: 40px;
+                        text-align: center;
+                        page-break-inside: avoid;
+                    }
+
+                    .id-card-container {
+                        display: inline-block;
+                        text-align: left;
+                        page-break-inside: avoid;
+                    }
+
+                    .employee-id-card,
+                    .employee-id-card-back {
                         width: 320px;
                         height: 550px;
                         border: 2px solid #2C3E50;
@@ -17,80 +192,61 @@
                         box-sizing: border-box;
                         padding: 20px;
                         text-align: center;
-                        position: relative;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                        background-color: #fff;
+                        vertical-align: top;
+                        display: inline-block;
+                        margin: 0 20px 20px 0;
+                        float: left;
                     }
 
-                    /* Title Style */
-                    .employee-id-card h3 {
-                        margin: 0;
-                        font-size: 22px;
-                        color: #2C3E50;
-                        font-weight: bold;
-                        border-bottom: 2px solid #bdc3c7;
-                        padding-bottom: 10px;
-                        margin-bottom: 20px;
-                    }
-
-                    /* Company Logo */
-                    .employee-logo {
-                        width: 80px;
-                        height: 80px;
+                    .employee-logo, .employee-photo {
+                        margin: 0 auto 20px;
                         border-radius: 8px;
                         overflow: hidden;
-                        margin: 0 auto 20px;
                         border: 2px solid #3498db;
-                    }
-                    .employee-logo img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
+                        width: 80px;
+                        height: 80px;
                     }
 
-                    /* Employee Photo */
                     .employee-photo {
                         width: 120px;
                         height: 120px;
                         border-radius: 50%;
-                        overflow: hidden;
                         border: 4px solid #3498db;
-                        margin: 20px auto 10px;
                     }
 
-                    .employee-photo img {
+                    .employee-logo img, .employee-photo img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
                     }
 
-                    /* Employee Info */
-                    .employee-info {
+                    .employee-id-card h3, .employee-id-card-back h4 {
+                        font-size: 22px;
+                        color: #2C3E50;
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                        border-bottom: 2px solid #bdc3c7;
+                        padding-bottom: 10px;
+                    }
+
+                    .employee-info, .employee-back-info {
                         font-size: 14px;
                         color: #34495e;
                         line-height: 1.6;
-                        margin-top: 10px;
+                        text-align: left;
                     }
 
-                    .employee-info p {
+                    .employee-info p, .employee-back-info p {
                         margin: 6px 0;
                         font-weight: 500;
                     }
 
-                    /* Footer Section */
                     .employee-footer {
                         font-size: 12px;
                         color: #7f8c8d;
-                        margin-top: 20px;
                         padding-top: 10px;
                         border-top: 1px solid #bdc3c7;
-                    }
-
-                    .employee-footer p {
-                        margin: 5px 0;
+                        text-align: center;
                     }
 
                     .employee-footer a {
@@ -99,60 +255,146 @@
                         font-weight: bold;
                     }
 
-                    .employee-footer a:hover {
-                        text-decoration: underline;
+                    .employee-qr-code {
+                        text-align: center;
+                        margin-top: 30px;
                     }
 
-                    /* Enhancements for better readability */
-                    .employee-info strong {
-                        color: #2C3E50;
+                    .employee-qr-code img {
+                        width: 100px;
+                        height: 100px;
+                        object-fit: contain;
+                    }
+
+                    .employee-qr-code p {
+                        margin-top: 10px;
+                        font-size: 12px;
+                        color: #7f8c8d;
+                    }
+
+                    .terms-conditions {
+                        font-size: 12px;
+                        color: #34495e;
+                        line-height: 1.5;
+                        margin-top: 20px;
+                        text-align: left;
+                    }
+
+                    .terms-conditions h5 {
+                        font-weight: bold;
+                    }
+
+                    @media print {
+                        .id-card-wrapper {
+                            page-break-inside: avoid;
+                        }
+
+                        .employee-id-card,
+                        .employee-id-card-back {
+                            float: left;
+                            page-break-inside: avoid;
+                        }
+
+                        .id-card-container {
+                            display: inline-block;
+                        }
                     }
                 </style>
 
-                <!-- Card -->
-                <div class="page">
-                    <div class="employee-id-card">
-                        <div>
-                            <!-- Company Logo -->
-                            <div class="employee-logo">
-                                <t t-if="employee.company_id.logo">
-                                    <img t-att-src="'data:image/png;base64,' + (employee.company_id.logo and employee.company_id.logo.decode('utf-8') or '')" />
-                                </t>
-                                <t t-else="">
-                                    <img src="/web/static/src/img/placeholder.png" />
-                                </t>
+                <div class="id-card-wrapper">
+                    <div class="id-card-container">
+                        <!-- Front Side -->
+                        <div class="employee-id-card">
+                            <div>
+                                <div class="employee-logo">
+                                    <t t-if="employee.company_id.logo">
+                                        <img t-att-src="'data:image/png;base64,' + (employee.company_id.logo and employee.company_id.logo.decode('utf-8') or '')"/>
+                                    </t>
+                                    <t t-else="">
+                                        <img src="/web/static/src/img/placeholder.png"/>
+                                    </t>
+                                </div>
+
+                                <h3>Employee ID Card</h3>
+
+                                <div class="employee-photo">
+                                    <t t-if="employee.image_1920">
+                                        <img t-att-src="'data:image/png;base64,' + (employee.image_1920 and employee.image_1920.decode('utf-8') or '')"/>
+                                    </t>
+                                    <t t-else="">
+                                        <img src="/web/static/src/img/placeholder.png"/>
+                                    </t>
+                                </div>
+
+                                <div class="employee-info">
+                                    <p>
+                                        <strong>Name:</strong>
+                                        <t t-esc="employee.name"/>
+                                    </p>
+                                    <p>
+                                        <strong>Position:</strong>
+                                        <t t-esc="employee.job_title"/>
+                                    </p>
+                                    <p>
+                                        <strong>Email:</strong>
+                                        <t t-esc="employee.work_email"/>
+                                    </p>
+                                    <p>
+                                        <strong>Phone:</strong>
+                                        <t t-esc="employee.work_phone"/>
+                                    </p>
+                                </div>
                             </div>
 
-                            <h3>Employee ID Card</h3>
-
-                            <!-- Image -->
-                            <div class="employee-photo">
-                                <t t-if="employee.image_1920">
-                                    <img t-att-src="'data:image/png;base64,' + (employee.image_1920 and employee.image_1920.decode('utf-8') or '')" />
-                                </t>
-                                <t t-else="">
-                                    <img src="/web/static/src/img/placeholder.png" />
-                                </t>
-                            </div>
-
-                            <!-- Info -->
-                            <div class="employee-info">
-                                <p><strong>Name:</strong> <t t-esc="employee.name" /></p>
-                                <p><strong>Position:</strong> <t t-esc="employee.job_title" /></p>
-                                <p><strong>Email:</strong> <t t-esc="employee.work_email" /></p>
-                                <p><strong>Phone:</strong> <t t-esc="employee.work_phone" /></p>
+                            <div class="employee-footer">
+                                <p>
+                                    <strong>Address:</strong>
+                                    <t t-esc="company_address"/>
+                                </p>
+                                <p>
+                                    <strong>Website:</strong>
+                                    <a href="https://kendroo.io/" target="_blank">kendroo.io</a>
+                                </p>
                             </div>
                         </div>
 
-                        <!-- Footer -->
-                        <div class="employee-footer">
-                            <p><strong>Address:</strong> <t t-esc="company_address" /></p>
-                            <p>
-                                <strong>Website:</strong>
-                                <a href="https://kendroo.io/" target="_blank">
-                                    kendroo.io
-                                </a>
-                            </p>
+                        <!-- Back Side -->
+                        <div class="employee-id-card-back">
+                            <h4>Employee Details</h4>
+                            <div class="employee-back-info">
+                                <p>
+                                    <strong>Department:</strong>
+                                    <t t-esc="employee.department_id.name or 'N/A'"/>
+                                </p>
+                                <p>
+                                    <strong>Employee ID:</strong>
+                                    <t t-esc="employee.id"/>
+                                </p>
+                                <p>
+                                    <strong>Issued on:</strong>
+                                    <t t-esc="employee.create_date.strftime('%Y-%m-%d')"/>
+                                </p>
+                                <p>
+                                    <strong>Emergency Contact:</strong>
+                                    <t t-esc="employee.emergency_phone or 'Not Available'"/>
+                                </p>
+                            </div>
+
+                            <div class="terms-conditions">
+                                <h5>Terms and Conditions:</h5>
+                                <p>
+                                    1. This card is property of the company and must be returned upon termination of employment.<br/>
+                                    2. The card is not transferable and should not be used by anyone other than the issued employee.<br/>
+                                    3. The employee is responsible for the proper care and security of this ID card.<br/>
+                                    4. Lost or stolen cards must be reported immediately to the HR department.
+                                </p>
+                            </div>
+
+                            <div class="employee-qr-code">
+                                <img t-att-src="'/report/barcode/?type=QR&amp;value=' + str(employee.id) + '&amp;width=200&amp;height=200&amp;humanreadable=0'"
+                                     alt="QR Code"/>
+                                <p>Scan for Employee Info</p>
+                            </div>
                         </div>
                     </div>
                 </div>
