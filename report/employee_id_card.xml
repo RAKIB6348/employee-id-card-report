@@ -1,0 +1,28 @@
+<odoo>
+    <template id="employee_id_card_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="employee">
+                <div class="page" style="border: 2px solid #000; padding: 20px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between;">
+                    <!-- Left side for image -->
+                    <div style="width: 120px; height: 120px; border-radius: 10px; overflow: hidden; margin-right: 15px;">
+                        <t t-if="employee.image_1920">
+                            <img t-att-src="'data:image/png;base64,' + (employee.image_1920 and employee.image_1920.decode('utf-8') or '')" style="width: 100%; height: 100%; object-fit: cover;" />
+                        </t>
+                        <t t-else="">
+                            <img src="/web/static/src/img/placeholder.png" style="width: 100%; height: 100%; object-fit: cover;" />
+                        </t>
+                    </div>
+
+                    <!-- Right side for text -->
+                    <div style="flex-grow: 1; font-family: Arial, sans-serif;">
+                        <h2 style="text-align: center; font-size: 18px; color: #2E3A59; margin-bottom: 10px;">Employee ID Card</h2>
+                        <p style="font-size: 14px; color: #333;"><strong>Name:</strong> <t t-esc="employee.name"/></p>
+                        <p style="font-size: 14px; color: #333;"><strong>Job Position:</strong> <t t-esc="employee.job_title"/></p>
+                        <p style="font-size: 14px; color: #333;"><strong>Work Email:</strong> <t t-esc="employee.work_email"/></p>
+                        <p style="font-size: 14px; color: #333;"><strong>Phone:</strong> <t t-esc="employee.work_phone"/></p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,12 @@
+<odoo>
+    <record id="action_employee_id_card_report" model="ir.actions.report">
+        <field name="name">Employee ID Card</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">employee_id_card_report.employee_id_card_template</field>
+        <field name="report_file">employee_id_card_report.employee_id_card_template</field>
+        <field name="print_report_name">'Employee_ID_Card_' + object.name</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
